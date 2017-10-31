@@ -10,3 +10,27 @@
 
 
 5. ```npm install jquery bootstrap babel-core babel-loader babel-preset-es2015 sass-loader node-sass webpack css-loader style-loader -D```
+6. Copy the webpack.config.js from slack or the repo into the root of our application. Pretty please. 
+7. You'll need this added to your web pack:
+```js
+devServer: {
+    contentBase: "./dist"
+  },
+  ```
+8. And your scripts in your package.json needs to have the following: 
+```
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open"
+  },
+  ```
+  9. Add a ```.gitignore``` and add the following lines
+```
+/node_modules
+/dist
+```
+
+
+
