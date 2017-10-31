@@ -31,6 +31,7 @@ devServer: {
 /node_modules
 /dist
 ```
-
+10. Probably gonna need ```npm install -D file-loader``` for bootstrap fonts loaded from file...maybe
+11. 
 
 
