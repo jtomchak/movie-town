@@ -9,4 +9,4 @@
 ```<script src="./app.bundle.js"></script>```
 
 
-5. ```npm install jquery bootstrap babel-core babel-loader babel-preset-es2015 sass-loader node-sass webpack -D```
+5. ```npm install jquery bootstrap babel-core babel-loader babel-preset-es2015 sass-loader node-sass webpack css-loader style-loader -D```
