@@ -1,2 +1,4 @@
 /node_modules
-/dist
+
+# But not these files...
+!dist/index.html
