@@ -8,3 +8,9 @@ body {
   background: $halloween-background-color;
   color: $text-color;
 }
+.box {
+  background-color: #dedef8;
+  box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;
+  // height: 100px;
+  color: black;
+}

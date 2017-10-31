@@ -75,3 +75,6 @@ body {
 "start": "webpack-dev-server --open"
 ```
 
+15. Create a fetch request, wrapped in function. and handle the resolve or reject from the fetch call. Console.log out the payload in json so we know that it's working, or failing. :-(
+```const movieURL = "https://api.themoviedb.org/3/genre/27/movies?api_key=2434d246ec60c162a86db597467ef4ed&language=en-US&include_adult=false&sort_by=created_at.asc"``` 
+
