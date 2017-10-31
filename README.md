@@ -70,5 +70,8 @@ body {
     </div>
   </nav>
 ```
-
+14. Now you can run your dev server, but first we need to install it ```npm install -D webpack-dev-server```. And make sure that our npm scripts for start is correct. 
+```js
+"start": "webpack-dev-server --open"
+```
 
