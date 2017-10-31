@@ -35,6 +35,10 @@ module.exports = {
             loader: "sass-loader" // compiles Sass to CSS
           }
         ]
+      },
+      {
+        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        loader: "file-loader"
       }
     ]
   },

@@ -32,6 +32,43 @@ devServer: {
 /dist
 ```
 10. Probably gonna need ```npm install -D file-loader``` for bootstrap fonts loaded from file...maybe
-11. 
+11. update our webpack with file-loader module
+```
+{
+        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        loader: "file-loader"
+      }
+```
+12. add a style.scss to your src folder with the following
+```
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+$halloween-background-color: #f07c05;
+$text-color: #faf7f7;
+
+body {
+  background: $halloween-background-color;
+  color: $text-color;
+}
+```
+13. Add nav and navbar stuff to index.html
+```HTML
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#nav1">Halloween Wobble Site</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active navShows">
+          <a href="#nav1">Meow Shows</a>
+        </li>
+        <li class="active navSurprise">
+          <a href="#nav2">Surprise</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+```
 
 
