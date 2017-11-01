@@ -1,4 +1,5 @@
-import $ from "jquery";
+import "jquery";
+import "bootstrap-loader";
 import "./style.scss";
 
 $(document).ready(function() {
