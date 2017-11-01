@@ -146,3 +146,12 @@ body {
 ```js
 //Note the Movie Id needs to be concated before you can fetch!!!!
 https://api.themoviedb.org/3/movie/<MOVIE-ID>?api_key=2434d246ec60c162a86db597467ef4ed
+```
+
+27. You can attach a click event directly on an element as it is created. Sadly you can't attach an event listener on an element before it's appended to the DOM.  
+
+```js
+.click(function() {
+  console.log(movie.id);
+})
+```
