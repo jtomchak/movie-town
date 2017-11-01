@@ -4,6 +4,11 @@ import "./style.scss";
 $(document).ready(function() {
   let moviesList = [];
 
+  // ---> Event Listeners
+  $("#myBtn").click(function() {
+    $("#myModal").modal();
+  });
+
   const getMovies = () => {
     const movieURL =
       "https://api.themoviedb.org/3/genre/27/movies?api_key=2434d246ec60c162a86db597467ef4ed&language=en-US&include_adult=false&sort_by=created_at.asc";
@@ -21,7 +26,10 @@ $(document).ready(function() {
   const createPosters = () => {
     moviesList
       .map(function(movie) {
-        var divColumn = $("<div>").attr("class", "col-md-4");
+        var divColumn = $("<div>").attr(
+          "class",
+          "col-xs-12 col-sm-6 col-md-4 col-lg-4"
+        );
         var divThumbnail = $("<div>")
           .attr("class", "thumbnail")
           .append(
@@ -31,12 +39,32 @@ $(document).ready(function() {
                 "https://image.tmdb.org/t/p/w500/" + movie.poster_path
               )
               .attr("class", "poster_image")
+          )
+          .append(
+            $("<div>")
+              .attr("class", "caption")
+              .append($("<h2>").append(movie.title))
+              .append(
+                $("<h4>")
+                  .append(movie.release_date)
+                  .attr("class", "hidden-xs hidden-sm")
+              )
+              .append(
+                $("<p>", {
+                  class: "",
+                  text: movie.overview
+                }).attr("class", "hidden-xs hidden-sm")
+              )
+              .append(
+                $("<p>").append(
+                  $("<a>")
+                    .attr("href", "http://www.imdb.com/title/") //to be modaled
+                    .attr("class", "btn btn-primary")
+                    .attr("role", "button")
+                    .text("Details")
+                )
+              )
           );
-        divThumbnail.append(
-          $("<div>")
-            .attr("class", "caption")
-            .append($("<h2>").append(movie.title))
-        );
         divColumn.append(divThumbnail);
         return divColumn;
       })
@@ -44,16 +72,24 @@ $(document).ready(function() {
     //put movieElements on the page already!!!
   };
   const appendElementWithVisibleSpacing = (movieElement, index) => {
-    //create md clearfix for columns
-    const divVisibleSpaceMD = $("<div>").attr(
+    //create md & lg clearfix for columns
+    const divVisibleSpaceMDLG = $("<div>").attr(
       "class",
-      "clearfix visible-md-block"
+      "clearfix visible-md-block visible-lg-block"
+    );
+    //create sm xs clearfix for columns
+    const divVisibleSpaceSM = $("<div>").attr(
+      "class",
+      "clearfix visible-sm-block"
     );
     //put div in movies class div
     $(".movies").append(movieElement);
     //every 3rd add a clearfix MD
     if (index && (index + 1) % 3 === 0) {
-      $(".movies").append(divVisibleSpaceMD);
+      $(".movies").append(divVisibleSpaceMDLG);
+    }
+    if (index && (index + 1) % 2 === 0) {
+      $(".movies").append(divVisibleSpaceSM);
     }
   };
   getMovies();

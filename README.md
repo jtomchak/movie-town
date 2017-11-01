@@ -84,3 +84,9 @@ body {
 
 18. Ok. I think we've had it for the day. 
 
+19. Now we've got our movies up, and showing thumbnail and title as a class caption. Rad. Looks good in md-col, but what about xsm, sm, and lg. So let's fix that!
+
+20. Adding in release data and description, and a call to action button for details
+
+21.
+
