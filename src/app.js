@@ -10,6 +10,11 @@ $(document).ready(function() {
     $("#myModal").modal();
   });
 
+  $("#movie-details").on("click", function(event) {
+    console.log("CLICKED ME");
+    console.log($(this).attr("id"));
+  });
+
   const getMovies = () => {
     const movieURL =
       "https://api.themoviedb.org/3/genre/27/movies?api_key=2434d246ec60c162a86db597467ef4ed&language=en-US&include_adult=false&sort_by=created_at.asc&page=2";
@@ -57,13 +62,14 @@ $(document).ready(function() {
                 }).attr("class", "hidden-xs hidden-sm")
               )
               .append(
-                $("<p>").append(
-                  $("<a>")
-                    .attr("href", "http://www.imdb.com/title/") //to be modaled
-                    .attr("class", "btn btn-primary")
-                    .attr("role", "button")
-                    .text("Details")
-                )
+                $("<button>")
+                  .attr("id", "movie-details")
+                  .attr("class", "btn btn-info btn-md")
+                  .attr("type", "button")
+                  .text("Details")
+                  .click(function() {
+                    console.log(movie.id);
+                  })
               )
           );
         divColumn.append(divThumbnail);
