@@ -27,6 +27,7 @@
 
   <!-- Start of Content -->
   <div class="content">
+    <button type="button" class="btn btn-info btn-lg" id="myBtn">OPEN ME!!!</button>
     <!-- Page of Movies -->
     <div id="movies" class="container">
       <div class="row movies">
@@ -35,13 +36,29 @@
       </div>
     </div>
 
-    <!-- Page of Surprise -->
-    <div id="surprise" class="container">
-      <div class="row surprise">
-        <button type="button" class="btn btn-primary">Surprise me with Cats!</button>
+    <!--Modal in Action  -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal Content HERE -->
+        <div class="modal-content">
+          <!-- modal header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Movie Details!!!!</h4>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <p>Movies Details Here!!!!</p>
+          </div>
+          <!-- Modal FOOTER -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- End of Modal Content -->
       </div>
     </div>
-
 
 
     <!-- End of Content -->
