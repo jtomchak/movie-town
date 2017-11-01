@@ -88,5 +88,5 @@ body {
 
 20. Adding in release data and description, and a call to action button for details
 
-21.
+21. We added col for xs, sm, and lg. This includes clearfix for 2 col layout aka sm/xs. 
 
