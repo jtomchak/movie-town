@@ -15,29 +15,45 @@ $(document).ready(function() {
         createPosters(); //call create now that we have data.
       })
       .catch(err => {
-        console.error(err);
+        console.log(err);
       });
   };
   const createPosters = () => {
-    for (let i = 0; i < moviesList.length; i++) {
-      let movie = moviesList[i];
-      var divColumn = $("<div>").attr("class", "col-md-4");
-      var divVisibleSpaceMD = $("<div>").attr(
-        "class",
-        "clearfix visible-md-block"
-      );
-      var divThumbnail = $("<div>")
-        .attr("class", "poster_thumbnail")
-        .append(
-          $("<img>")
-            .attr("src", "https://image.tmdb.org/t/p/w500/" + movie.poster_path)
-            .attr("class", "poster_image")
+    moviesList
+      .map(function(movie) {
+        var divColumn = $("<div>").attr("class", "col-md-4");
+        var divThumbnail = $("<div>")
+          .attr("class", "thumbnail")
+          .append(
+            $("<img>")
+              .attr(
+                "src",
+                "https://image.tmdb.org/t/p/w500/" + movie.poster_path
+              )
+              .attr("class", "poster_image")
+          );
+        divThumbnail.append(
+          $("<div>")
+            .attr("class", "caption")
+            .append($("<h2>").append(movie.title))
         );
-      divColumn.append(divThumbnail); //put image in div
-      $(".movies").append(divColumn); //put div in movies class div
-      if (i && (i + 1) % 3 === 0) {
-        $(".movies").append(divVisibleSpaceMD); //every 3rd add a clearfix
-      }
+        divColumn.append(divThumbnail);
+        return divColumn;
+      })
+      .map(appendElementWithVisibleSpacing);
+    //put movieElements on the page already!!!
+  };
+  const appendElementWithVisibleSpacing = (movieElement, index) => {
+    //create md clearfix for columns
+    const divVisibleSpaceMD = $("<div>").attr(
+      "class",
+      "clearfix visible-md-block"
+    );
+    //put div in movies class div
+    $(".movies").append(movieElement);
+    //every 3rd add a clearfix MD
+    if (index && (index + 1) % 3 === 0) {
+      $(".movies").append(divVisibleSpaceMD);
     }
   };
   getMovies();
