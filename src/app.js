@@ -3,17 +3,10 @@ import "bootstrap-loader";
 import "./style.scss";
 
 $(document).ready(function() {
+  //This will hide the body of our site until all our stuff including
+  //CSS has been loaded. Sweet. No unstyled Flashing.
+  $("body").removeClass("hidden");
   let moviesList = [];
-
-  // ---> Event Listeners
-  $("#myBtn").click(function() {
-    $("#myModal").modal();
-  });
-
-  $("#movie-details").on("click", function(event) {
-    console.log("CLICKED ME");
-    console.log($(this).attr("id"));
-  });
 
   const getMovies = () => {
     const movieURL =
@@ -28,6 +21,30 @@ $(document).ready(function() {
       .catch(err => {
         console.log(err);
       });
+  };
+
+  const getMovieDetails = movieId => {
+    const movieDetailsURL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=2434d246ec60c162a86db597467ef4ed`;
+    fetch(movieDetailsURL)
+      .then(res => res.json())
+      .then(payload => {
+        console.log(payload);
+        presentMovieDetailsModal(payload);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const presentMovieDetailsModal = movie => {
+    $(".modal-title:first").text(movie.title);
+    $(".movieDetails-overview:first").text(movie.overview);
+    $(".movieDetails-img:first").attr(
+      "src",
+      "https://image.tmdb.org/t/p/w500/" + movie.poster_path
+    );
+    $(".movieDetails-tagline:first").text(movie.tagline);
+    $("#movieDetails-modal").modal();
   };
   const createPosters = () => {
     moviesList
@@ -51,17 +68,6 @@ $(document).ready(function() {
               .attr("class", "caption")
               .append($("<h2>").append(movie.title))
               .append(
-                $("<h4>")
-                  .append(movie.release_date)
-                  .attr("class", "hidden-xs hidden-sm")
-              )
-              .append(
-                $("<p>", {
-                  class: "",
-                  text: movie.overview
-                }).attr("class", "hidden-xs hidden-sm")
-              )
-              .append(
                 $("<button>")
                   .attr("id", "movie-details")
                   .attr("class", "btn btn-info btn-md")
@@ -69,14 +75,15 @@ $(document).ready(function() {
                   .text("Details")
                   .click(function() {
                     console.log(movie.id);
+                    getMovieDetails(movie.id);
                   })
               )
           );
         divColumn.append(divThumbnail);
         return divColumn;
       })
+      //put movieElements on the page already!!!
       .map(appendElementWithVisibleSpacing);
-    //put movieElements on the page already!!!
   };
   const appendElementWithVisibleSpacing = (movieElement, index) => {
     //create md & lg clearfix for columns

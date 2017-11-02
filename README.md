@@ -153,5 +153,6 @@ https://api.themoviedb.org/3/movie/<MOVIE-ID>?api_key=2434d246ec60c162a86db59746
 ```js
 .click(function() {
   console.log(movie.id);
+  //
 })
 ```

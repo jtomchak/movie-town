@@ -2,15 +2,16 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 $halloween-background-color: #f07c05;
-$text-color: #faf7f7;
+$text-color: #080808;
 
 body {
   background: $halloween-background-color;
   color: $text-color;
 }
-.box {
-  background-color: #dedef8;
-  box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;
-  // height: 100px;
-  color: black;
+
+.movieDetails-img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
 }
